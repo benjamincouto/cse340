@@ -4,3 +4,269 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* Header */
+#top-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.siteName a,
+#tools a {
+  text-decoration: none;
+  color: black;
+}
+
+.siteName {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+#tools {
+  justify-content: end;
+  align-self: flex-start;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Navigation */
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  background-color: black;
+  color: white;
+  padding: 0.8rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Hero */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+.hero-image {
+  width: auto;
+  display: inline-block;
+}
+
+.hero-area {
+  text-align: center;
+  position: relative;
+}
+
+.hero-area h1 {
+  text-align: left;
+}
+
+.hero-image {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-box {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem;
+  color: #63adf2;
+}
+
+.hero-box h4 {
+  margin: 0;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+.hero-box ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.own-today-image {
+  width: 100px;
+}
+
+.own-today-image:hover {
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+}
+
+/* Reviews */
+
+.reviews h3 {
+  margin-bottom: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.reviews ul {
+  padding-left: 20px;
+  margin: 0.5rem;
+}
+
+.reviews ul li {
+  margin-bottom: 0.5rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Upgrades */
+
+.upgrades {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.upgrades-grid div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  background-color: #63adf2;
+  padding: 0.8rem;
+}
+
+.upgrades-grid div a {
+  font-weight: bold;
+  color: black;
+}
+
+.upgrade-image {
+  width: auto;
+  height: 80px;
+}
+
+/* Footer */
+footer p {
+  font-size: 0.7rem;
+}
+
+/* Larger */
+
+@media screen and (min-width: 60em) {
+  /* Body */
+  html {
+    background-image: url("/images/site/small_check.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body {
+    margin: 3rem;
+    border: 10px solid #63adf2;
+    border-radius: 15px;
+    background: white;
+  }
+
+  /* Header */
+  #top-header {
+    margin-top: 1rem;
+  }
+
+  .siteName a {
+    font-size: 3rem;
+    margin-left: 1rem;
+  }
+
+  #tools {
+    margin-top: 1rem;
+    margin-right: 1rem;
+  }
+
+  /* Navigation */
+  nav ul {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  /* Hero */
+
+  .hero-area {
+    text-align: center;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    position: relative;
+  }
+
+  .hero-image {
+    display: inline-block;
+    width: auto;
+  }
+
+  .hero-box {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    font-size: 1.2rem;
+  }
+
+  .hero-area h1 {
+    text-align: left;
+    font-size: 2rem;
+  }
+
+  /* Reviews and Upgrades */
+  .reviews-upgrades-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem;
+  }
+
+  .reviews {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+
+  .upgrades {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    margin: 0;
+  }
+
+  .reviews h3,
+  .upgrades h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  /* Footer */
+  footer p {
+    font-size: 1rem;
+    margin: 1.5rem;
+  }
+}
