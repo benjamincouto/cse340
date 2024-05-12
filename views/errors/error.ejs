@@ -1,0 +1,9 @@
+<!-- Content Heading:  -->
+<% if (title) { %>
+<h1 class="inv-h1"><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Message Block -->
+<%= message %>
