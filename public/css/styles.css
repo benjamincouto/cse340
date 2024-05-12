@@ -175,11 +175,12 @@ footer p {
 }
 
 /* Inventory */
+
 #inv-display {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px; 
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #inv-display li {
@@ -191,6 +192,10 @@ footer p {
   justify-content: space-between;
   align-items: center;
   font-family: "Montserrat", sans-serif;
+  margin: 1rem;
+  padding: 1.2rem;
+  border: 3px solid black;
+  border-radius: 10px;
   
 }
 
@@ -209,10 +214,60 @@ footer p {
 }
 
 .inv-h1 {
-  margin-left: 1.5rem;
+  text-align: center;
 }
 
 
+/* Vehicle details */
+#vehicle-display {
+  display: flex;
+  flex-direction: column;
+}
+
+#vehicle-display {
+  margin: 1.5rem;
+}
+
+.vehicle-h1 {
+  text-align: center;
+}
+
+
+#vehicle-display li {
+  padding-top: 0.8rem;
+ 
+}
+
+#vehicle-display li::first-word {
+  font-weight: bolder;
+}
+
+#vehicle-display div ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+footer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+footer a {
+  font-size: 1.2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.error-message {
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: "Montserrat", sans-serif;
+  margin: 1rem;
+}
 
 /* Larger */
 
@@ -309,4 +364,24 @@ footer p {
     font-size: 1rem;
     margin: 1.5rem;
   }
+
+  /* Inventory */
+  #inv-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px; 
+    align-items: stretch;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Vehicle details */
+  #vehicle-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: auto;
+    font-family: "Montserrat", sans-serif;
+  }
+
+
 }
