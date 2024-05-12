@@ -181,7 +181,10 @@ footer p {
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
+  padding: 1rem;
 }
+
+
 
 #inv-display li {
   padding: 0.5rem;
