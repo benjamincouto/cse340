@@ -174,6 +174,46 @@ footer p {
   font-size: 0.7rem;
 }
 
+/* Inventory */
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px; 
+  align-items: stretch;
+}
+
+#inv-display li {
+  padding: 0.5rem;
+  font-size: 0.7rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  
+}
+
+#inv-display img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#inv-display h2 {
+  font-size: 1.2rem;
+}
+
+#inv-display span {
+  font-size: 1.2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.inv-h1 {
+  margin-left: 1.5rem;
+}
+
+
+
 /* Larger */
 
 @media screen and (min-width: 60em) {
