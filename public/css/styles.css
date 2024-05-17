@@ -272,6 +272,66 @@ footer a {
   margin: 1rem;
 }
 
+
+/* Login form */
+.form-flex {
+  display: flex;
+  justify-content: center;
+}
+
+#login-form, #register-form {
+  font-family: "Montserrat", sans-serif;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 500px;
+}
+
+#login-button {  
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#login-form p {
+  font-size: .8rem;
+  text-align: center;
+}
+
+#login-form label, #register-form label {
+  margin-bottom: -1rem;
+}
+
+/* Register */
+#login-form #password-help {
+  text-align: start;
+  font-size: 0.7rem;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* Login Message */
+#messages {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #63adf2;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.notice {
+  list-style-type: none;
+  margin: 0;
+  padding: 1rem;
+}
+
 /* Larger */
 
 @media screen and (min-width: 60em) {

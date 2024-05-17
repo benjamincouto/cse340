@@ -1,0 +1,22 @@
+<!-- Content Heading:  -->
+<% if (title) { %>
+    <h1 class="inv-h1"><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+<!-- Message Block -->
+<%# messages() %>
+<div class="form-flex">
+<form id="register-form" action="/account/register" method="post">
+    <label for="firstname">First Name: </label><br>
+    <input type="text" id="fname-register" name="account_firstname"><br>
+    <label for="lastname">Last Name: </label><br>
+    <input type="text" id="lname-register" name="account_lastname"><br>
+    <label for="email">E-mail: </label><br>
+    <input type="email" id="email-register" name="account_email"><br>
+    <label for="password">Password: </label><br>
+    <input type="password" id="register-password" name="account_password"><br>
+    <p id="password-help">*** Password must be at least 12 characters long, contain at least 1 capital letter, 1 number, and 1 special character.</p>
+    <input type="submit" value="Register" id="register-button">
+</form>
+</div>
