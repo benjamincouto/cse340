@@ -6,8 +6,15 @@
     } %>
 <!-- Message Block -->
 <%- messages() %>
+<% if (errors) { %>
+    <ul class="notice-login">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
 <div class="form-flex">
-<form id="login-form">
+<form id="login-form" action="/account/login" method="post">
     <label for="email">E-mail: </label><br>
     <input type="email" id="email-login" name="account_email" required><br>
     <label for="password">Password: </label><br>
