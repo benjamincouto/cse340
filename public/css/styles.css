@@ -332,6 +332,16 @@ footer a {
   padding: 1rem;
 }
 
+.notice-register {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: red;
+  list-style-type: none;
+  margin: 0;
+  padding: 1rem;
+}
+
 /* Larger */
 
 @media screen and (min-width: 60em) {
