@@ -279,7 +279,7 @@ footer a {
   justify-content: center;
 }
 
-#login-form, #register-form, #management-container {
+#login-form, #register-form, #management-container, #add-inventory-form {
   font-family: "Montserrat", sans-serif;
   border: 2px solid black;
   padding: 20px;
@@ -332,6 +332,7 @@ footer a {
   padding: 1rem;
 }
 
+
 .notice-register, .notice-login {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -364,7 +365,7 @@ footer a {
 }
 
 
-.notice-add-class {
+.notice-add-class, .notice-add-inv {
   color: red;
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -373,6 +374,13 @@ footer a {
   margin: 0;
   padding: 1rem;
 }
+
+/* Add inventory */
+#add-inventory-form select {
+  margin-bottom: 1.2rem;
+}
+
+
 
 /* Larger */
 
@@ -488,5 +496,9 @@ footer a {
     font-family: "Montserrat", sans-serif;
   }
 
+  /* Add inventory */
+  #add-inventory-form {
+    min-width: 600px;
+  }
 
 }

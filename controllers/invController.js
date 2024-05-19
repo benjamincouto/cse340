@@ -87,4 +87,61 @@ invCont.addClassification = async function (req, res) {
   }
 }
 
+
+/* ****************************************
+*  Build add-inventory view
+* *************************************** */
+invCont.buildAddNewInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  let classDropDown = await utilities.buildClassificationList()
+  res.render("./inventory/add-inventory", {
+    title: "Add Inventory",
+    nav,
+    classDropDown,
+    errors: null,
+  })
+}
+
+
+/* ****************************************
+*  Process add-inventory
+* *************************************** */
+invCont.addInventory = async function (req, res) {
+  let nav = await utilities.getNav()
+  let classDropDown = await utilities.buildClassificationList()
+  const { classification_id, 
+    inv_make, inv_model, inv_year, 
+    inv_description, inv_image, inv_thumbnail, 
+    inv_price, inv_miles, inv_color} = req.body
+
+  const invResult = await invModel.addInventory(
+    classification_id,inv_make, inv_model, inv_year, 
+    inv_description, inv_image, inv_thumbnail, 
+    inv_price, inv_miles, inv_color);
+
+  if (invResult) {
+    req.flash(
+      "notice",
+      "Succesfully added to our inventory."
+    )
+    let nav = await utilities.getNav()
+    let classDropDown = await utilities.buildClassificationList()
+    res.status(201).render("./inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      classDropDown,
+      errors: null,
+    })
+  } else {
+    req.flash("notice", "Sorry, the add-inventory process failed.")
+    res.status(501).render("./inventory/add-inventory", {
+      title: "Add Classification",
+      nav,
+      classDropDown,
+      errors: null,
+    })
+  }
+}
+
+
 module.exports = invCont;
