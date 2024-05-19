@@ -279,7 +279,7 @@ footer a {
   justify-content: center;
 }
 
-#login-form, #register-form {
+#login-form, #register-form, #management-container {
   font-family: "Montserrat", sans-serif;
   border: 2px solid black;
   padding: 20px;
@@ -338,6 +338,38 @@ footer a {
   font-size: 0.8rem;
   color: red;
   list-style-type: none;
+  margin: 0;
+  padding: 1rem;
+}
+
+
+/* Management View */
+#management-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 3px;
+}
+
+#management-list li {
+  padding: 1rem;
+}
+
+#management-container {
+  margin:auto;
+}
+
+
+.notice-add-class {
+  color: red;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  list-style-type: none;
+  font-weight: bold;
   margin: 0;
   padding: 1rem;
 }

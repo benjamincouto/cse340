@@ -1,0 +1,25 @@
+<!-- Content Heading:  -->
+<% if (title) { %>
+    <h1 class="inv-h1"><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+<!-- Message Block -->
+<%- messages() %>
+<% if (errors) { %>
+    <ul class="notice-add-class">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+
+<div class="form-flex">
+<form id="add-classification-form" action="/inv/add-classification" method="post">
+    <label for="classification_name">Classification Name: </label><br>
+    <input type="text" id="cname-add" name="classification_name" required pattern="^[A-Za-z]+$" value="<%= locals.classification_name %>"><br>
+    <p id="add-classification-help">*** Name must be alphabetic characters only and cannot contain spaces or special characters.</p>
+    <input type="submit" value="Add Classification" id="classification-button">
+</form>
+</div>
