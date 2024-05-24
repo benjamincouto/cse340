@@ -241,9 +241,7 @@ footer p {
  
 }
 
-#vehicle-display li::first-word {
-  font-weight: bolder;
-}
+
 
 #vehicle-display div ul {
   list-style-type: none;

@@ -16,25 +16,25 @@
 
 <div class="form-flex">
     <form id="add-inventory-form" action="/inv/add-inventory" method="post">
-        <label for="classification_id">Classification: </label><br>
+        <label for="classificationList">Classification: </label><br>
         <%- classDropDown %>        
-        <label for="inv_make">Make: </label><br>
+        <label for="make-add">Make: </label><br>
         <input type="text" id="make-add" name="inv_make" required pattern="^[A-Za-z0-9 ]{3,}$" value="<%= locals.inv_make %>" placeholder="Min of 3 characters"><br>
-        <label for="inv_model">Model: </label><br>
+        <label for="model-add">Model: </label><br>
         <input type="text" id="model-add" name="inv_model" required pattern="^[A-Za-z0-9 ]{3,}$" value="<%= locals.inv_model %>" placeholder="Min of 3 characters"><br>
-        <label for="inv_description">Description: </label><br>
-        <textarea type="text" id="description-add" name="inv_description" rows="8" cols="30" required value="<%= locals.inv_description %>"></textarea><br>
-        <label for="inv_image">Image Path: </label>
-        <input type="text" id="image-add" name="inv_image" required value="/images/vehicles/no-image.png" required><br>
-        <label for="inv_thumbnail">Image Path: </label>
-        <input type="text" id="thumbnail-add" name="inv_thumbnail" required value="/images/vehicles/no-image.png" required><br>
-        <label for="inv_price">Price: </label><br>
-        <input type="text" id="price-add" name="inv_price" required pattern="^\d+(\.\d+)?$" value="<%= locals.inv_price %>" placeholder="Decimal or integer"><br>
-        <label for="inv_year">Year: </label><br>
-        <input type="text" id="year-add" name="inv_year" required pattern="\d{4}" value="<%= locals.inv_year %>" placeholder="4-digit Year"><br>
-        <label for="inv_miles">Miles: </label><br>
-        <input type="text" id="miles-add" name="inv_miles" required pattern="\d+" value="<%= locals.nv_miles %>" placeholder="Digits only"><br>
-        <label for="inv_color">Color: </label><br>
+        <label for="description-add">Description: </label><br>
+        <textarea id="description-add" name="inv_description" rows="8" cols="30" required></textarea><br>
+        <label for="image-add">Image Path: </label>
+        <input type="text" id="image-add" name="inv_image" required value="/images/vehicles/no-image.png"><br>
+        <label for="thumbnail-add">Image Path: </label>
+        <input type="text" id="thumbnail-add" name="inv_thumbnail" required value="/images/vehicles/no-image.png"><br>
+        <label for="price-add">Price: </label><br>
+        <input type="number" id="price-add" name="inv_price" required pattern="^\d+(\.\d+)?$" value="<%= locals.inv_price %>" placeholder="Decimal or integer"><br>
+        <label for="year-add">Year: </label><br>
+        <input type="number" id="year-add" name="inv_year" required pattern="\d{4}" value="<%= locals.inv_year %>" placeholder="4-digit Year"><br>
+        <label for="miles-add">Miles: </label><br>
+        <input type="number" id="miles-add" name="inv_miles" required pattern="\d+" value="<%= locals.nv_miles %>" placeholder="Digits only"><br>
+        <label for="color-add">Color: </label><br>
         <input type="text" id="color-add" name="inv_color" required pattern="[a-zA-Z]+" value="<%= locals.inv_color %>"><br>
 
         <input type="submit" value="Add To Inventory" id="inventory-button">
