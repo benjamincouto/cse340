@@ -1,0 +1,15 @@
+<!-- Content Heading:  -->
+<% if (title) { %>
+    <h1 class="inv-h1"><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+<!-- Message Block -->
+<%- messages() %>
+<% if (errors) { %>
+    <ul class="notice-login">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>

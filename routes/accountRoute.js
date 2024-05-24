@@ -16,11 +16,14 @@ router.post('/register', regValidate.registrationRules(),regValidate.checkRegDat
 
 // Process the login attempt
 router.post(
-    "/login", regValidate.loginRules(),regValidate.checkLoginData,
-    (req, res) => {
-      res.status(200).send('login process')
-    }
+    "/login", 
+    regValidate.loginRules(),
+    regValidate.checkLoginData,
+    utilities.handleErrors(accountController.accountLogin)
   )
+
+// Account Management View
+router.get("/", utilities.handleErrors(accountController.buildAccountManagement))
 
 
 module.exports = router;
