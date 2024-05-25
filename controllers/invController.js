@@ -166,7 +166,7 @@ invCont.buildModifyInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
   const itemData = await invModel.getVehicleDetailsByInvId(inv_id)
   const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
-  let classDropDown = await utilities.buildClassificationList()
+  let classDropDown = await utilities.buildClassificationList(itemData[0].classification_id)
   res.render("./inventory/modify-inventory", {
     title: "Modify " + itemName,
     nav,
@@ -191,30 +191,30 @@ invCont.buildModifyInventory = async function (req, res, next) {
 * *************************************** */
 invCont.updateInventory = async function (req, res) {
   let nav = await utilities.getNav()
-  const { inv_id, classification_id, 
+  const { classification_id, 
     inv_make, inv_model, inv_year, 
     inv_description, inv_image, inv_thumbnail, 
-    inv_price, inv_miles, inv_color} = req.body
+    inv_price, inv_miles, inv_color, inv_id} = req.body
 
   const updateResult = await invModel.updateInventory(
-    inv_id, classification_id,inv_make, inv_model, inv_year, 
-    inv_description, inv_image, inv_thumbnail, 
-    inv_price, inv_miles, inv_color);
+    inv_make, inv_model, inv_description,
+    inv_image, inv_thumbnail, inv_price,
+    inv_year, inv_miles, inv_color, 
+    classification_id, inv_id);
 
   if (updateResult) {
-    const itemName = updateResult.inv_make + " " + updateResult.inv_model
+    const itemName = `${inv_make} ${inv_model}`
     req.flash(
       "notice",
       `The ${itemName} was succesfully updated.`)
     res.redirect("/inv/") 
   } else {
-    let classDropDown = await utilities.buildClassificationList()
+    let classDropDown = await utilities.buildClassificationList(classification_id)
     const itemName = `${inv_make} ${inv_model}`
     req.flash("notice", "Sorry, the insert failed.")
     res.status(501).render("./inventory/modify-inventory", {
       title: "Modify " + itemName,
       nav,
-      classDropDown,
       errors: null,
       classDropDown: classDropDown,
       errors: null,

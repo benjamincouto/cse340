@@ -25,9 +25,9 @@
         <label for="description-mod">Description: </label><br>
         <textarea id="description-mod" name="inv_description" rows="8" cols="30" required><%= locals.inv_description %></textarea><br>
         <label for="image-mod">Image Path: </label>
-        <input type="text" id="image-mod" name="inv_image" required value="/images/vehicles/no-image.png"><br>
+        <input type="text" id="image-mod" name="inv_image" required value="<%- locals.inv_image %>"><br>
         <label for="thumbnail-mod">Image Path: </label>
-        <input type="text" id="thumbnail-mod" name="inv_thumbnail" required value="/images/vehicles/no-image.png"><br>
+        <input type="text" id="thumbnail-mod" name="inv_thumbnail" required value="<%- locals.inv_thumbnail %>"><br>
         <label for="price-mod">Price: </label><br>
         <input type="number" id="price-mod" name="inv_price" required min="0" step="0.01" value="<%= locals.inv_price %>" placeholder="Decimal or integer"><br>
         <label for="year-mod">Year: </label><br>
@@ -37,10 +37,12 @@
         <label for="color-mod">Color: </label><br>
         <input type="text" id="color-mod" name="inv_color" required pattern="[a-zA-Z]+" value="<%= locals.inv_color %>"><br>
 
-        <input type="submit" value="Update Vehicle" id="inventory-button">
+        <input type="submit" value="Update Vehicle" id="inventory-button" disabled>
         <input type="hidden" name="inv_id"
         <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
         <% } %>>
     </form>
+    <script src="../../js/inv-update.js"></script>
 </div>
+
 
