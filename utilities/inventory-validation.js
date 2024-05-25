@@ -79,7 +79,7 @@ validate.inventoryRules = () => {
     .notEmpty()
     .withMessage("Please provide a valid path for the image"),
 
-    // inv_image path is required and must be string
+    // inv_thumbnail path is required and must be string
     body("inv_thumbnail")
     .trim()
     .escape()
@@ -91,7 +91,7 @@ validate.inventoryRules = () => {
     .trim()
     .escape()
     .notEmpty()
-    .matches(/^\d+(\.\d+)?$/)
+    .isFloat({ min: 0 })
     .withMessage("Please provide a valid price"),
 
     // year is 4-digit and required
@@ -100,7 +100,7 @@ validate.inventoryRules = () => {
     .escape()
     .notEmpty()
     .isLength({ min: 4 })
-    .matches(/\d{4}/)
+    .isInt({ min: 1900, max: 2099 })
     .withMessage("Please provide a valid 4-digit year"),
 
     // miles is required, it should only include integers
@@ -108,7 +108,7 @@ validate.inventoryRules = () => {
     .trim()
     .escape()
     .notEmpty()
-    .matches(/\d+/)
+    .isInt({ min: 0 })
     .withMessage("Please provide the mileage, only integer values allowed"),
 
     // color is required, it should only include alphabetic characters
@@ -137,6 +137,40 @@ validate.checkInventoryData = async (req, res, next) => {
       title: "Add Inventory",
       nav,
       classDropDown,
+      classification_id,
+      inv_make, 
+      inv_model, 
+      inv_year, 
+      inv_description, 
+      inv_image, 
+      inv_thumbnail, 
+      inv_price, 
+      inv_miles, 
+      inv_color 
+    })
+    return
+  }
+  next()
+}
+
+// Check data when updating inventory, error will be directed back to edit view
+validate.checkUpdateData = async (req, res, next) => {
+  const { inv_id, classification_id,inv_make, 
+    inv_model, inv_year, 
+    inv_description, inv_image, inv_thumbnail, 
+    inv_price, inv_miles, inv_color } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    let classDropDown = await utilities.buildClassificationList()
+    res.render("./inventory/modify-inventory", {
+      errors,
+      //Sera que esto funciona? De donde saca el itemName
+      title: "Modify " + itemName,
+      nav,
+      classDropDown,
+      inv_id,
       classification_id,
       inv_make, 
       inv_model, 

@@ -38,9 +38,11 @@ invCont.buildByInvId = async function (req, res, next) {
 * *************************************** */
 invCont.buildManagement = async function (req, res, next) {
   let nav = await utilities.getNav()
+  const classDropDown = await utilities.buildClassificationList()
   res.render("./inventory/management", {
     title: "Management",
     nav,
+    classDropDown,
     errors: null,
   })
 }
@@ -142,6 +144,96 @@ invCont.addInventory = async function (req, res) {
     })
   }
 }
+
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+invCont.getInventoryJSON = async (req, res, next) => {
+  const classification_id = parseInt(req.params.classification_id)
+  const invData = await invModel.getInventoryByClassificationId(classification_id)
+  if (invData[0].inv_id) {
+    return res.json(invData)
+  } else {
+    next(new Error("No data returned"))
+  }
+}
+
+/* ***************************
+ *  Build Modify Inventory View
+ * ************************** */
+invCont.buildModifyInventory = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id)
+  let nav = await utilities.getNav()
+  const itemData = await invModel.getVehicleDetailsByInvId(inv_id)
+  const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
+  let classDropDown = await utilities.buildClassificationList()
+  res.render("./inventory/modify-inventory", {
+    title: "Modify " + itemName,
+    nav,
+    classDropDown: classDropDown,
+    errors: null,
+    inv_id: itemData[0].inv_id,
+    inv_make: itemData[0].inv_make,
+    inv_model: itemData[0].inv_model,
+    inv_year: itemData[0].inv_year,
+    inv_description: itemData[0].inv_description,
+    inv_image: itemData[0].inv_image,
+    inv_thumbnail: itemData[0].inv_thumbnail,
+    inv_price: itemData[0].inv_price,
+    inv_miles: itemData[0].inv_miles,
+    inv_color: itemData[0].inv_color,
+    classification_id: itemData[0].classification_id
+  })
+}
+
+/* ****************************************
+*  Process modify/update-inventory
+* *************************************** */
+invCont.updateInventory = async function (req, res) {
+  let nav = await utilities.getNav()
+  const { inv_id, classification_id, 
+    inv_make, inv_model, inv_year, 
+    inv_description, inv_image, inv_thumbnail, 
+    inv_price, inv_miles, inv_color} = req.body
+
+  const updateResult = await invModel.updateInventory(
+    inv_id, classification_id,inv_make, inv_model, inv_year, 
+    inv_description, inv_image, inv_thumbnail, 
+    inv_price, inv_miles, inv_color);
+
+  if (updateResult) {
+    const itemName = updateResult.inv_make + " " + updateResult.inv_model
+    req.flash(
+      "notice",
+      `The ${itemName} was succesfully updated.`)
+    res.redirect("/inv/") 
+  } else {
+    let classDropDown = await utilities.buildClassificationList()
+    const itemName = `${inv_make} ${inv_model}`
+    req.flash("notice", "Sorry, the insert failed.")
+    res.status(501).render("./inventory/modify-inventory", {
+      title: "Modify " + itemName,
+      nav,
+      classDropDown,
+      errors: null,
+      classDropDown: classDropDown,
+      errors: null,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id
+    })
+  }
+}
+
+
 
 
 module.exports = invCont;

@@ -1,0 +1,46 @@
+<!-- Content Heading:  -->
+<% if (title) { %>
+    <h1 class="inv-h1"><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+<!-- Message Block -->
+<%- messages() %>
+<% if (errors) { %>
+    <ul class="notice-add-inv">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+<div class="form-flex">
+    <form id="mod-inventory-form" action="/inv/update" method="post">
+        <label for="classificationList">Classification: </label><br>
+        <%- classDropDown %>        
+        <label for="make-mod">Make: </label><br>
+        <input type="text" id="make-mod" name="inv_make" required pattern="^[A-Za-z0-9 ]{3,}$" value="<%= locals.inv_make %>" placeholder="Min of 3 characters"><br>
+        <label for="model-mod">Model: </label><br>
+        <input type="text" id="model-mod" name="inv_model" required pattern="^[A-Za-z0-9 ]{3,}$" value="<%= locals.inv_model %>" placeholder="Min of 3 characters"><br>
+        <label for="description-mod">Description: </label><br>
+        <textarea id="description-mod" name="inv_description" rows="8" cols="30" required><%= locals.inv_description %></textarea><br>
+        <label for="image-mod">Image Path: </label>
+        <input type="text" id="image-mod" name="inv_image" required value="/images/vehicles/no-image.png"><br>
+        <label for="thumbnail-mod">Image Path: </label>
+        <input type="text" id="thumbnail-mod" name="inv_thumbnail" required value="/images/vehicles/no-image.png"><br>
+        <label for="price-mod">Price: </label><br>
+        <input type="number" id="price-mod" name="inv_price" required min="0" step="0.01" value="<%= locals.inv_price %>" placeholder="Decimal or integer"><br>
+        <label for="year-mod">Year: </label><br>
+        <input type="number" id="year-mod" name="inv_year" required min="1900" max="2099" value="<%= locals.inv_year %>" placeholder="4-digit Year"><br>
+        <label for="miles-mod">Miles: </label><br>
+        <input type="number" id="miles-mod" name="inv_miles" required min="0" step="1" value="<%= locals.inv_miles %>" placeholder="Digits only"><br>
+        <label for="color-mod">Color: </label><br>
+        <input type="text" id="color-mod" name="inv_color" required pattern="[a-zA-Z]+" value="<%= locals.inv_color %>"><br>
+
+        <input type="submit" value="Update Vehicle" id="inventory-button">
+        <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+        <% } %>>
+    </form>
+</div>
+

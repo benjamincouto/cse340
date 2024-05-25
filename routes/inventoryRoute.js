@@ -36,4 +36,19 @@ router.post(
     invValidation.checkInventoryData,
     utilities.handleErrors(invController.addInventory));
 
+
+// Route to inventory management using inventory.js
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON)) 
+
+// Modify Inventory View route
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildModifyInventory))
+
+// Route to process Inventory modification
+router.post(
+    "/update/",
+    invValidation.inventoryRules(),
+    invValidation.checkUpdateData,
+    utilities.handleErrors(invController.updateInventory))
+
+
 module.exports = router;

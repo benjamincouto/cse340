@@ -277,7 +277,7 @@ footer a {
   justify-content: center;
 }
 
-#login-form, #register-form, #management-container, #add-inventory-form {
+#login-form, #register-form, #management-container, #add-inventory-form, #mod-inventory-form {
   font-family: "Montserrat", sans-serif;
   border: 2px solid black;
   padding: 20px;
@@ -372,6 +372,44 @@ footer a {
   margin: 0;
   padding: 1rem;
 }
+
+/* Manage Inventory */
+
+.manage-inventory {
+  margin: 1rem;
+}
+
+.manage-inventory p {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Inventory table */
+#inventoryDisplay {
+  width: 100%;
+  margin: 20px 0;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+}
+
+#inventoryDisplay th, #inventoryDisplay td {
+  padding: 12px 15px;
+}
+
+
+#inventoryDisplay tr:hover {
+  background-color: #f9f9f9;
+}
+
+#inventoryDisplay a {
+  color: blue;
+  text-decoration: none;
+}
+
+#inventoryDisplay a:hover {
+  text-decoration: underline;
+}
+
 
 /* Add inventory */
 #add-inventory-form select {
@@ -495,7 +533,7 @@ footer a {
   }
 
   /* Add inventory */
-  #add-inventory-form {
+  #add-inventory-form, #mod-inventory-form  {
     min-width: 600px;
   }
 
