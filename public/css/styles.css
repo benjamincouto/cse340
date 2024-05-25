@@ -277,7 +277,7 @@ footer a {
   justify-content: center;
 }
 
-#login-form, #register-form, #management-container, #add-inventory-form, #mod-inventory-form {
+#login-form, #register-form, #management-container, #add-inventory-form, #mod-inventory-form, #delete-inventory-form {
   font-family: "Montserrat", sans-serif;
   border: 2px solid black;
   padding: 20px;
@@ -416,6 +416,14 @@ footer a {
   margin-bottom: 1.2rem;
 }
 
+/* Delete Inventory Item */
+.delete-banner {
+  text-align: center;
+  font-weight: bold;
+  color: red;
+  font-family: "Montserrat", sans-serif;
+}
+
 
 
 /* Larger */
@@ -533,7 +541,7 @@ footer a {
   }
 
   /* Add inventory */
-  #add-inventory-form, #mod-inventory-form  {
+  #add-inventory-form, #mod-inventory-form, #delete-inventory-form  {
     min-width: 600px;
   }
 
