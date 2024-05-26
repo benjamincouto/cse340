@@ -13,3 +13,14 @@
   <%  }) %>
    </ul>
   <% } %>
+
+<!-- Check account type and render accordingly -->
+<div id="account-management-grid">
+    <% let account = locals.accountData %>
+    <h2>Welcome <%= account.account_firstname %>!</h2>
+    <a title="Update Account" href="/account/update/<%= account.account_id %>">Update my account information</a>
+    <% if (account.account_type == 'Employee' || account.account_type == 'Admin') { %>
+        <h3>Inventory Management</h3>
+        <p><a title="Access Inventory Management" href="/inv/">Click here to manage the inventory</a></p>
+    <% } %>
+</div>

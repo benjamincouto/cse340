@@ -135,6 +135,82 @@ validate.checkLoginData = async (req, res, next) => {
     next()
 }
 
+    /* ******************************
+ * Update account validation
+ * ***************************** */
 
+validate.updateAccountRules = () => {
+  return [
+    body("account_firstname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isAlpha()
+      .withMessage("Please provide a first name.")
+      .isLength({ min: 1, max: 255 })
+      .withMessage("First name must be between 1 and 255 characters."),
+    body("account_lastname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isAlpha()
+      .withMessage("Please provide a last name.")
+      .isLength({ min: 1, max: 255 })
+      .withMessage("Last name must be between 1 and 255 characters."),
+    body("account_email")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Please provide an email.")
+      .isEmail()
+      .withMessage("Please provide a valid email."),
+  ];
+};
+
+validate.checkUpdateAccountData = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    return res.render("account/update-account-details", {
+      errors: errors.array(),
+      title: "Update Account",
+      nav,
+      account_firstname: req.body.account_firstname,
+      account_lastname: req.body.account_lastname,
+      account_email: req.body.account_email,
+    });
+  }
+  next();
+};
+
+    /* ******************************
+ * Validate change password
+ * ***************************** */
+
+validate.changePasswordRules = () => {
+  return [
+    body("account_password")
+      .trim()
+      .notEmpty()
+      .withMessage("Please provide a password.")
+      .isLength({ min: 12 })
+      .withMessage("Password must be at least 12 characters long.")
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$/)
+      .withMessage("Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and 1 special character."),
+  ];
+};
+
+validate.checkChangePasswordData = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    return res.render("account/change-password", {
+      errors: errors.array(),
+      title: "Change Password",
+      nav,
+    });
+  }
+  next();
+};
 
   module.exports = validate

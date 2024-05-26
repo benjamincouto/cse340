@@ -29,6 +29,26 @@
   justify-content: end;
   align-self: flex-start;
   font-family: "Montserrat", sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.account-container,
+.login-logout-container {
+  margin-right: 15px;
+}
+
+.header-welcome,
+.header-login,
+.header-logout {
+  text-decoration: none;
+  color: #000;
+}
+
+.header-welcome:hover,
+.header-login:hover,
+.header-logout:hover {
+  font-weight: bold;
 }
 
 /* Navigation */
@@ -275,9 +295,11 @@ footer a {
 .form-flex {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-#login-form, #register-form, #management-container, #add-inventory-form, #mod-inventory-form, #delete-inventory-form {
+#login-form, #register-form, #management-container, #add-inventory-form, #mod-inventory-form, #delete-inventory-form, #update-account-form, #update-password-form {
   font-family: "Montserrat", sans-serif;
   border: 2px solid black;
   padding: 20px;
@@ -286,6 +308,7 @@ footer a {
   flex-direction: column;
   justify-content: center;
   max-width: 500px;
+  margin: 1rem;
 }
 
 #login-button {  
@@ -371,6 +394,14 @@ footer a {
   font-weight: bold;
   margin: 0;
   padding: 1rem;
+}
+
+#account-management-grid {
+  margin: 1rem;
+}
+
+#account-management-grid a, #account-management-grid p {
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Manage Inventory */
@@ -541,7 +572,7 @@ footer a {
   }
 
   /* Add inventory */
-  #add-inventory-form, #mod-inventory-form, #delete-inventory-form  {
+  #add-inventory-form, #mod-inventory-form, #delete-inventory-form, #update-account-form, #update-password-form  {
     min-width: 600px;
   }
 

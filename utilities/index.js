@@ -122,7 +122,7 @@ Util.checkJWTToken = (req, res, next) => {
           return res.redirect("/account/login")
         }
         res.locals.accountData = accountData
-        res.locals.loggedin = 1
+        res.locals.loggedIn = 1
         next()
       }
     )
@@ -136,7 +136,7 @@ Util.checkJWTToken = (req, res, next) => {
  *  Check Login
  * ************************************ */
 Util.checkLogin = (req, res, next) => {
-  if (res.locals.loggedin) {
+  if (res.locals.loggedIn) {
     next()
   } else {
     req.flash("notice", "Please log in.")
@@ -144,6 +144,18 @@ Util.checkLogin = (req, res, next) => {
   }
 }
 
+/* ****************************************
+ *  Check Account Type (restrict access to non Admin or Employee)
+ * ************************************ */
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.loggedIn) {
+    if (res.locals.accountData.account_type == 'Admin' || res.locals.accountData.account_type == 'Employee') {
+      next()
+    } else {
+      return res.redirect("/account/login")
+    }
+  }
+}
 
 /* ****************************************
  * Middleware For Handling Errors

@@ -16,9 +16,9 @@
 
 <div class="form-flex">
 <form id="login-form" action="/account/login" method="post">
-    <label for="email">E-mail: </label><br>
+    <label for="email-login">E-mail: </label><br>
     <input type="email" id="email-login" name="account_email" required><br>
-    <label for="password">Password: </label><br>
+    <label for="login-password">Password: </label><br>
     <input type="password" id="login-password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required><br>
     <p id="password-help">*** Password must be at least 12 characters long, contain at least 1 capital letter, 1 number, and 1 special character.</p>
     <input type="submit" value="Login" id="login-button">
