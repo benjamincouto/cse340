@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
 /* Header */
 #top-header {
   display: flex;
@@ -283,6 +287,16 @@ footer p {
 .regbtn {
   margin-top: 1rem;
 }
+
+.inventory-reviews {
+  margin: 1rem;
+}
+
+.inventory-reviews li {
+  margin: 1rem;
+  font-family: "Montserrat", sans-serif; 
+}
+
 
 footer {
   margin-top: 4rem;
@@ -606,6 +620,14 @@ footer a {
     grid-template-columns: 1fr 1fr;
     grid-row: auto;
     font-family: "Montserrat", sans-serif;
+  }
+
+  #vehicle-display img {
+    margin-right: 1rem;
+  }
+
+  #vehicle-display div {
+    margin-left: 1rem;
   }
 
   /* Add inventory */
