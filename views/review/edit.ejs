@@ -1,0 +1,30 @@
+<% if (title) {%>
+    <h1 class="review-edit-delete-title">
+      <%= title %>
+    </h1>
+    <%} else {res.redirect('/')} %>
+    
+    <%- messages() %>
+    
+    <% if (errors) { %>
+    <ul class="message warning">
+      <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+      <%  }) %>
+    </ul>
+    <% } %>
+  
+    <div id="registerContainer">
+      <p>All fields are required.</p>
+      <form action="/review/update" method="post">
+        <fieldset>
+          <label>Review Date</label>
+          <input disabled value="<%= locals.review_date %>" />
+          <label for="reviewtext">Review Text</label>
+          <textarea id="reviewtext" name="review_text" required><%= locals.review_text %></textarea>
+          <input type="hidden" name="review_id" value="<%= locals.review_id %>">
+          <input type="submit" name="submit" class="regbtn" value="Update">
+        </fieldset>
+      </form>
+    </div>
+  

@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const rvwModel = require("../models/review-model")
 const utilities = require("../utilities/")
 
 const invCont = {}
@@ -20,16 +21,25 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Build vehicle detail view
+ *  Assignment 3, Task 1
+ *  Modified for Review Final Project
+ * ************************** */
 invCont.buildByInvId = async function (req, res, next) {
   const inv_id = req.params.inv_id
-  const data = await invModel.getVehicleDetailsByInvId(inv_id)
-  const grid = await utilities.buildVehicleDetailsGrid(data)
+  const vehicleData = await invModel.getVehicleDetailsByInvId(inv_id)
+  res.locals.inv_id = inv_id // review form
+  const grid = await utilities.buildVehicleDetailsGrid(vehicleData)
+  const reviews = await rvwModel.getReviewsByInvId(inv_id)
+  const reviewDisplay = utilities.buildReviewList(reviews)
   let nav = await utilities.getNav()
   res.render("./inventory/vehicleDetails", {
-    title: data[0].inv_year + ' ' + data[0].inv_make + ' ' + data[0].inv_model,
+    title: vehicleData[0].inv_year + ' ' + vehicleData[0].inv_make + ' ' + vehicleData[0].inv_model,
     nav,
+    message: null,
     grid,
-    errors: null,
+    reviewDisplay,
   })
 }
 

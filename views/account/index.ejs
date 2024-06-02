@@ -24,3 +24,16 @@
         <p><a title="Access Inventory Management" href="/inv/">Click here to manage the inventory</a></p>
     <% } %>
 </div>
+
+<!-- Reviews -->
+<div id="acc-management-reviews">
+    <% if(locals.reviewList){ %>
+        <h3>My Reviews</h3>
+        <%- locals.reviewList %>
+        <% } %>
+    
+    <% if(accountData.account_type != 'Client'){ %>
+        <h3>Inventory Management</h3>
+    <p><a href="/inv/" target="_blank">Manage Inventory</a></p> 
+    <% } %>
+</div>

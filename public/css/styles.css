@@ -247,6 +247,7 @@ footer p {
   flex-direction: column;
 }
 
+
 #vehicle-display {
   margin: 1.5rem;
 }
@@ -261,14 +262,27 @@ footer p {
  
 }
 
-
-
 #vehicle-display div ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
+/* Vehicle details - Reviews */
+#reviewform fieldset {
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif; 
+  padding: 0.5rem; 
+}
+
+#reviewform fieldset label {
+  margin-top: 1rem;
+}
+
+.regbtn {
+  margin-top: 1rem;
+}
 
 footer {
   margin-top: 4rem;
@@ -396,12 +410,35 @@ footer a {
   padding: 1rem;
 }
 
-#account-management-grid {
+#account-management-grid, #acc-management-reviews {
   margin: 1rem;
 }
 
 #account-management-grid a, #account-management-grid p {
   font-family: "Montserrat", sans-serif;
+}
+
+#acc-management-reviews {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Edit Review */
+#registerContainer {
+  margin: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+#registerContainer form fieldset{
+  display: flex;
+  flex-direction: column;
+}
+
+#registerContainer form fieldset label {
+  margin-top: 1rem;
+}
+
+.review-edit-delete-title {
+  margin: 1rem;
 }
 
 /* Manage Inventory */

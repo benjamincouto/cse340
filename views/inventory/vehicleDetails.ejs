@@ -10,3 +10,47 @@
     
     <!-- Inventory Items Display -->
     <%- grid %>
+
+    Review
+    <h2 id="reviews">Customer Reviews</h2>
+    <% 
+    if(Object.entries(reviewDisplay).length > 0){ %>
+    <%- reviewDisplay %> 
+    <% } %> %>
+
+    <% if(!locals.loggedIn){ %>
+    <p>
+    You must <a href="/account/login" title="Click to login">login</a> to write a
+    review.
+    </p>
+    <% } else { 
+    const screenname = locals.accountData.account_firstname[0]+locals.accountData.account_lastname;
+    %>
+    <h3>Add Your Own Review</h3>
+    <%- messages() %>
+    <form action="/review/insert" method="post" id="reviewform">
+    <fieldset>
+        <label for="screenname">Screen Name:
+            <input
+                name="screenname"
+                id="screenname"
+                value="<%- screenname %>"
+                readonly
+        /></label>
+        <label for="review">Review:</label>
+        <textarea name="review_text" id="review" rows="5" required></textarea>
+        <input
+            type="hidden"
+            name="account_id"
+            value="<%- locals.accountData.account_id %>"
+        />
+        <input
+            type="hidden"
+            name="inv_id"
+            value="<%- locals.inv_id %>"
+        />
+        <button class="regbtn">Submit Review</button>
+    </fieldset>
+    </form>
+    <% } %>
+

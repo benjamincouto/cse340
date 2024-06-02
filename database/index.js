@@ -20,6 +20,9 @@ if (process.env.NODE_ENV == "development") {
 module.exports = {
   async query(text, params) {
     try {
+      //Test
+      console.log('Query:', text); // Log the query string
+      console.log('Params:', params); // Log the parameters
       const res = await pool.query(text, params)
       console.log("executed query", { text })
       return res
